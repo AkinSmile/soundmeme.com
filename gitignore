@@ -1,5 +1,0 @@
-# Игнорируем локальные файлы с токенами
-config.js
-*.config.js
-secret.js
-.env
