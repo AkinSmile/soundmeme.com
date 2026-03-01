@@ -19,7 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Создаём config.js с токеном из Secrets
       - name: Create config file with token
         run: |
           echo "window.MY_GITHUB_TOKEN = '${{ secrets.GITHUB_TOKEN }}';" > config.js
