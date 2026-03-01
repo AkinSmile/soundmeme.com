@@ -19,10 +19,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ВАЖНО: используем TOKEN, а не GITHUB_TOKEN!
-      - name: Create config file with token
+      - name: Check if TOKEN exists
+        run: |
+          if [ -z "${{ secrets.TOKEN }}" ]; then
+            echo "❌ TOKEN is EMPTY!"
+          else
+            echo "✅ TOKEN exists"
+          fi
+
+      - name: Create config file
         run: |
           echo "window.MY_GITHUB_TOKEN = '${{ secrets.TOKEN }}';" > config.js
+          echo "✅ Config file created"
+          ls -la config.js
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
